@@ -1,4 +1,4 @@
-//#include "stdafx.h"
+#include "stdafx.h"
 
 #include <iostream>
 #include <string>
@@ -17,7 +17,7 @@ class Graph
 {
 private:
 	std::vector<Airline*> airlines;
-	std::vector<vertex> vertices;
+	std::vector<vertex*> vertices;
 public:
 	vertex* getRoute(Airport *start, Airport *destination);
 	vertex* getRoute(Airport *start, Airport *destination, std::string name);

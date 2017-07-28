@@ -1,4 +1,4 @@
-//#include "stdafx.h"
+#include "stdafx.h"
 #include "Graph.hpp"
 
 vertex * Graph::getRoute(Airport *start, Airport *end)
@@ -56,7 +56,7 @@ void Graph::insertVertex(Airport *key)
 	bool found = false;
 	for (int i = 0; i < vertices.size(); i++)
 	{
-		if (vertices[i].key == key)
+		if (vertices[i]->key == key)
 		{
 			found = true;
 			break;
@@ -64,8 +64,8 @@ void Graph::insertVertex(Airport *key)
 	}
 	if (found == false)
 	{
-		vertex v;
-		v.key = key;
+		vertex *v = new vertex;
+		v->key = key;
 		vertices.push_back(v);
 	}
 }
@@ -81,16 +81,16 @@ void Graph::insertEdge(vertex *v1, vertex *v2, int weight)
 	}
 	for (int i = 0; i < vertices.size(); i++)
 	{
-		if (vertices[i].key == v1->key)
+		if (vertices[i]->key == v1->key)
 		{
 			for (int j = 0; j < vertices.size(); j++)
 			{
-				if (vertices[j].key == v2->key && i != j)
+				if (vertices[j]->key == v2->key && i != j)
 				{
 					adjVertex a;
-					a.v = &vertices[j];
+					a.v = vertices[j];
 					a.weight = weight;
-					vertices[i].adjacent.push_back(a);
+					vertices[i]->adjacent.push_back(a);
 				}
 			}
 		}
@@ -101,10 +101,10 @@ void Graph::printGraph()
 {
 	for (int i = 0; i < vertices.size(); i++)
 	{
-		std::cout << vertices[i].key->name << " has flights to:" << std::endl;
-		for (int j = 0; j < vertices.size(); j++)
+		std::cout << vertices[i]->key->name << " has flights to:" << std::endl;
+		for (int j = 0; j < vertices[i]->adjacent.size(); j++)
 		{
-			std::cout << vertices[i].adjacent[j].v->key->name << std::endl;
+			std::cout << vertices[i]->adjacent[j].v->key->name << std::endl;
 		}
 	}
 }
@@ -143,9 +143,9 @@ vertex * Graph::search(std::string name)
 {
 	for (int i = 0; i < vertices.size(); i++)
 	{
-		if (vertices[i].key->name == name)
+		if (vertices[i]->key->name == name)
 		{
-			return &vertices[i];
+			return vertices[i];
 		}
 	}
 	return nullptr;
@@ -190,8 +190,9 @@ void Graph::buildGraph(std::string filename)
 			{
 				if (airlines[i]->name == input)
 				{
+					a->flightMap = airlines[i]->flightMap;
+					a->name = airlines[i]->name;
 					a->next = nullptr;
-					a = airlines[i];
 					break;
 				}
 			}
@@ -267,17 +268,17 @@ void Graph::buildGraph(std::string filename)
 		Graph *g = airlines[i]->flightMap;
 		for (int j = 0; j < g->vertices.size(); j++)
 		{
-			vertex v1 = g->vertices[j];
+			vertex *v1 = g->vertices[j];
 			for (int k = 0; k < g->vertices.size(); k++)
 			{
-				vertex v2 = g->vertices[k];
+				vertex *v2 = g->vertices[k];
 				if (k != j)
 				{
-					for (int l = 0; l < v2.adjacent.size(); l++)
+					for (int l = 0; l < v2->adjacent.size(); l++)
 					{
-						if (v2.key->name == v1.adjacent[k].v->key->name)
+						if (v2->key->name == v1->adjacent[k].v->key->name)
 						{
-							insertEdge(&v1, &v2, v1.adjacent[k].weight);
+							insertEdge(v1, v2, v1->adjacent[k].weight);
 						}
 					}
 				}

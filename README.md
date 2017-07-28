@@ -6,8 +6,7 @@ In order to run simply compile the provided files and interact through the comma
 Roman Dougherty
 
 Open Issues/Bugs
-The program breaks upon attempting to print Airports and their connections
 The program will not find the correct route through the graph
-The program does not properly display airlines in the Vector
+The program will not correctly print connections for a carrier
 
 Program was written in Visual Studio 2017 Community on a Windows system, however it should work just as well with g++.
