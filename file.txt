@@ -1,0 +1,75 @@
+Denver
+Minneapolis 
+NewYork 
+LosAngeles 
+Dallas 
+WashingtonDC 
+Atlanta 
+Chicago 
+Charlotte 
+LasVegas 
+Pheonix 
+Miami 
+
+mode2 
+
+Denver United
+Minneapolis  United
+NewYork  United
+LosAngeles  United
+Dallas United
+
+NewYork Delta
+LosAngeles Delta
+Dallas Delta
+WashingtonDC Delta
+Atlanta Delta
+
+Dallas SouthWest
+WashingtonDC SouthWest
+Atlanta SouthWest
+Chicago SouthWest
+Charlotte SouthWest
+
+Atlanta American
+Chicago American
+Charlotte American
+LasVegas American
+Pheonix American
+
+LasVegas Spirit
+Pheonix Spirit
+Miami Spirit
+Denver Spirit
+Minneapolis Spirit
+
+mode3
+
+Denver Minneapolis United 913
+Denver LosAngeles United 1016
+Minneapolis NewYork United 1209
+LosAngeles Dallas United 1426
+NewYork LosAngeles United 2795
+
+NewYork Dallas Delta 1548
+LosAngeles Dallas Delta 1436
+NewYork WashingtonDC Delta 226
+WashingtonDC Atlanta Delta 640
+
+Chicago Dallas SouthWest 925
+Chicago WashingtonDC SouthWest 700
+Chicago Atlanta SouthWest 716
+Chicago Charlotte SouthWest 756
+
+
+Atlanta Chicago American 716
+Chicago Charlotte American 756
+Charlotte LasVegas American 2203
+LasVegas Pheonix American 297
+Pheonix Chicago American 1805
+
+LasVegas Pheonix Spirit 297
+Pheonix Miami Spirit 2359
+Miami Denver Spirit 2066
+Denver Minneapolis Spirit 913
+Minneapolis Miami Spirit 1792
